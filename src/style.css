@@ -2,6 +2,7 @@
   margin: 0;
   padding: 0;
   color: white;
+  text-decoration: none;
 }
 
 body {
@@ -9,7 +10,7 @@ body {
   overflow-x: hidden;
 }
 
-body::-webkit-scrollbar{
+body::-webkit-scrollbar {
   display: none;
 }
 
@@ -31,7 +32,7 @@ body::-webkit-scrollbar{
 }
 
 #blob {
-  position: absolute;
+  position: fixed;
   aspect-ratio: 1 / 1;
   width: 18.75rem;
   background: var(--magic);
@@ -43,7 +44,7 @@ body::-webkit-scrollbar{
 }
 
 .blur {
-  position: absolute;
+  position: fixed;
   height: 100vh;
   width: 100vw;
   z-index: 2;
@@ -131,4 +132,26 @@ body::-webkit-scrollbar{
   border: none;
   font-size: clamp(0.4rem, 0.9rem, 1.1rem);
   font-weight: 600;
+}
+
+.loader {
+  position: absolute;
+  border: 2px solid #c3fae8;
+  border-radius: 50%;
+  border-top: 2px solid #087f5b;
+  width: 2em;
+  aspect-ratio: 1 / 1;
+  animation: spin 2s linear infinite;
+  left: 50%;
+  transform: translate(-50%, 0);
+  margin: 2em;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }

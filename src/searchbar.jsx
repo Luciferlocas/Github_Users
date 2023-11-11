@@ -1,28 +1,28 @@
-import { useState } from "react";
-import toastr from "toastr";
+import React, { useState } from "react";
+import Profile from "./profile";
+import Loader from "../loader";
 
 export default function SearchBar() {
-  let inputFieldValue;
-  const [submitButtonOpacity, setSubmitButtonOpacity] = useState(0.5);
+  const [userInput, setUserInput] = useState("");
+  const [data, setData] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+
   const handleInputChange = (event) => {
-    inputFieldValue = event.target.value;
-    if (inputFieldValue === "") {
-      setSubmitButtonOpacity(0.5);
-    } else {
-      setSubmitButtonOpacity(1);
-    }
+    setUserInput(event.target.value);
   };
+
   const submitted = async (e) => {
     e.preventDefault();
-    
+    setIsLoading(true);
+
     try {
-      const res = await fetch(
-        `https://api.github.com/users/${inputFieldValue}`
-      );
+      const res = await fetch(`https://api.github.com/users/${userInput}`);
       const data = await res.json();
-      console.log(data);
+      setData(data);
     } catch (error) {
-       
+      console.log("Error");
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -37,14 +37,16 @@ export default function SearchBar() {
             onChange={handleInputChange}
           />
           <button
-            style={{ opacity: submitButtonOpacity }}
-            className="enter"
             type="submit"
+            className="enter"
+            style={{ opacity: userInput.length > 0 ? 1 : 0.4 }}
           >
             Search
           </button>
         </form>
       </div>
+      {isLoading && <Loader />}
+      <Profile data={data} />
     </>
   );
 }
