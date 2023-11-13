@@ -3,6 +3,7 @@
   padding: 0;
   color: white;
   text-decoration: none;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 body {
@@ -98,11 +99,9 @@ body::-webkit-scrollbar {
 
 .name {
   font-size: clamp(0.5rem, 2rem, 2.2rem);
-  font-family: Arial, Helvetica, sans-serif;
 }
 
 .heading {
-  font-family: Arial, Helvetica, sans-serif;
   font-size: clamp(0.5rem, 1.8rem, 2.2rem);
   text-align: center;
   margin: 2%;
@@ -126,7 +125,7 @@ body::-webkit-scrollbar {
 .enter {
   cursor: pointer;
   height: 2.5em;
-  width: clamp(3em, 6em, 8em);
+  width: 7em;
   background: #099268;
   border-radius: 0.4em;
   border: none;
@@ -144,7 +143,7 @@ body::-webkit-scrollbar {
   animation: spin 2s linear infinite;
   left: 50%;
   transform: translate(-50%, 0);
-  margin: 2em;
+  margin: 1em;
 }
 
 @keyframes spin {
@@ -153,5 +152,118 @@ body::-webkit-scrollbar {
   }
   100% {
     transform: rotate(360deg);
+  }
+}
+
+article{
+  display: flex;
+  justify-content: center;
+}
+
+.userinfo{
+  border: 2px solid #087f5b;
+  border-radius: 0.5em;
+  position: absolute;
+  margin: 4em 1em 0 1em;
+  display: flex;
+}
+
+.user{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin: 1em;
+}
+
+.avatar{
+  overflow: hidden;
+  width: 10em;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+}
+
+.avatar img{
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.avatar img:hover{
+  animation: pulse 1s ease-in-out;
+}
+
+@keyframes pulse {
+  from, to {
+    scale: 1;
+  }
+  
+  50% {
+    scale: 1.08;
+  }
+}
+
+.basics{
+  margin: 0 1em;
+}
+
+.user_name{
+  margin: 1em 0 0 0;
+}
+
+.user_name > p{
+  font-size: 0.8em;
+  color: #12b886;
+}
+
+.enter2{
+  cursor: pointer;
+  width: fit-content;
+  background: #099268;
+  border-radius: 0.25em;
+  border: none;
+  padding: 0.3em;
+  font-size: clamp(0.4rem, 0.8rem, 1.1rem);
+}
+
+.buttons{
+  display: flex;
+  gap: 0.8em;
+  margin-top: 1em;
+  align-items: center;
+}
+
+.bio p{
+  margin-top: 1em;
+  font-family: 'Courier New', Courier, monospace !important;
+  font-size: clamp(0.5rem, 0.9rem, 1.1rem);
+}
+
+.about{
+  margin-top: 1em;
+  font-size: clamp(0.5rem, 0.9rem, 1.1rem);
+}
+
+.about div span{
+  color:#20c997;
+}
+
+.social a{
+  margin: 1em 0;
+  float: right;
+  align-items: center;
+  background-color: #08a0e9;
+  text-align: center;
+  padding: 0.3em 0.5em;
+  border-radius: 0.2em;
+}
+
+@media only screen and (max-width: 600px) {
+  .userinfo{
+    flex-direction: column;
+  }
+
+  .buttons{
+    display: grid;
+    grid-template-columns: repeat(2, minmax(150px, 3fr));
   }
 }

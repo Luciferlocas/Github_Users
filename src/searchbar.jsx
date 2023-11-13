@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Profile from "./profile";
-import Loader from "../loader";
+import Loader from "./loader";
 
 export default function SearchBar() {
   const [userInput, setUserInput] = useState("");
@@ -18,9 +18,15 @@ export default function SearchBar() {
     try {
       const res = await fetch(`https://api.github.com/users/${userInput}`);
       const data = await res.json();
+      if(data.message === "Not Found"){
+        alert(`${userInput} not found. PLease enter a valid username`);
+        return(
+          <></>
+        );
+      }
       setData(data);
     } catch (error) {
-      console.log("Error");
+        console.log("Error, try reloding")
     } finally {
       setIsLoading(false);
     }
