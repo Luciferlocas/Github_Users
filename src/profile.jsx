@@ -1,5 +1,10 @@
 import Button from "./button";
 import twitter from "./assets/twitter.png";
+import Followers from "./followers";
+import Orgs from "./orgs";
+import React from "react";
+import Repo from "./repo";
+import "./repo";
 
 export default function Profile({ data }) {
   if (!data) {
@@ -7,9 +12,10 @@ export default function Profile({ data }) {
   }
   if (data.location === null) {
   }
+  console.log(data.starred_url);
   return (
     <>
-      <article>
+      <article className="infoarticle">
         <div className="userinfo">
           <div className="user">
             <div className="avatar">
@@ -64,6 +70,10 @@ export default function Profile({ data }) {
                 <span>Joined on : </span>
                 {new Date(data.created_at).toLocaleDateString()}
               </div>
+              <div style={{ marginBottom: "1em" }}>
+                <span>Most Used Language : </span>
+                {globalThis.lang || "No language available, come on...😮‍💨"}
+              </div>
               <div className="social">
                 {data.twitter_username && (
                   <a
@@ -78,6 +88,11 @@ export default function Profile({ data }) {
           </div>
         </div>
       </article>
+      <div className="container">
+        <Repo url={data.repos_url} />
+        <Orgs orgs={data.organizations_url} />
+        <Followers fol={data.followers_url} />
+      </div>
     </>
   );
 }

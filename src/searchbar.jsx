@@ -10,7 +10,7 @@ export default function SearchBar() {
   const handleInputChange = (event) => {
     setUserInput(event.target.value);
   };
-
+  
   const submitted = async (e) => {
     e.preventDefault();
     setIsLoading(true);
@@ -52,7 +52,7 @@ export default function SearchBar() {
         </form>
       </div>
       {isLoading && <Loader />}
-      <Profile data={data} />
+      {!isLoading && <Profile data={data} />}
     </>
   );
 }
