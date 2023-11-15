@@ -10,9 +10,7 @@ export default function Profile({ data }) {
   if (!data) {
     return <></>;
   }
-  if (data.location === null) {
-  }
-  console.log(data.starred_url);
+  console.log(data.blog.length)
   return (
     <>
       <article className="infoarticle">
@@ -60,7 +58,7 @@ export default function Profile({ data }) {
                 <span>Website / Blog : </span>
                 {data.blog ? (
                   <a href={data.blog} target="_blank">
-                    {data.blog}
+                    Embrace a moment of discovery!
                   </a>
                 ) : (
                   "Not available"
