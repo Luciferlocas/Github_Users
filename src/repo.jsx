@@ -44,8 +44,6 @@ export default function Repo({ url }) {
     mostUsedLanguage = [...languageFrequencyMap.entries()].sort(
       (a, b) => b[1] - a[1]
     )[0][0];
-  } else {
-    console.log("No languages have been used yet.");
   }
   globalThis.lang = `${mostUsedLanguage}`;
   return (

@@ -10,7 +10,6 @@ export default function Profile({ data }) {
   if (!data) {
     return <></>;
   }
-  console.log(data.blog.length)
   return (
     <>
       <article className="infoarticle">
