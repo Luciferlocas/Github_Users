@@ -372,16 +372,9 @@ section{
 }
 
 @media only screen and (max-width: 600px) {
-  :root{
-    font-size: 8px !important;
-  }
 
   #blob{
     display: none;
-  }
-
-  .inputfield {
-    height: 0.5em;
   }
 
   .userinfo{
@@ -415,6 +408,16 @@ section{
   .owner{
     flex-direction: column;
     gap: 0;
+  }
+}
+
+@media only screen and (max-width: 250px) {
+  :root{
+    font-size: 8px !important;
+  }
+
+  .inputfield {
+    height: 0.5em;
   }
 }
 
