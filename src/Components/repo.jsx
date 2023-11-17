@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import React, { useState } from "react";
-import Loader from "./loader";
-import Button from "./button";
-import Pagination from "./pagination";
+import Loader from './loader.jsx';
+import Button from './button.jsx';
+import Pagination from './pagination.jsx';
 
 export default function Repo({ url }) {
   const [repos, setRepos] = useState([]);
@@ -65,8 +65,8 @@ export default function Repo({ url }) {
           </div>
           {isLoading ? <Loader /> : (set.length !== 0 ? set.map((repo) => (
             <>
-              <div className="reponame">
-                <div key={repo.id}>
+              <div className="reponame" key={repo.id}>
+                <div>
                   <a target="_blank" href={repo.html_url}>
                    Name - {repo.name}
                   </a>

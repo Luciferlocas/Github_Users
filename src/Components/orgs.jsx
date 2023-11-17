@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import React, { useState } from "react";
-import Pagination from "./pagination";
-import Loader from "./loader";
+import Pagination from "./pagination.jsx";
+import Loader from "./loader.jsx";
 
 export default function Orgs({ orgs }) {
   const [orgsData, setOrgsData] = useState([]);
@@ -44,8 +44,8 @@ export default function Orgs({ orgs }) {
         {isLoading && <Loader />}
         {set.length !== 0 ? (
           set.map((org) => (
-            <div className="orgname">
-              <div key={org.id}>
+            <div className="orgname" key={org.id}>
+              <div>
                 <a href={org.html_url}>
                   Name - {org.login}
                 </a>

@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
-import Loader from "./loader";
-import Button from "./button";
-import Pagination from "./pagination";
+import Loader from "./loader.jsx";
+import Button from "./button.jsx";
+import Pagination from "./pagination.jsx";
 
 export default function Starred({ link }) {
   const [str, setStar] = useState([]);
@@ -46,7 +46,7 @@ export default function Starred({ link }) {
           <Loader />
         ) : set.length !== 0 ? (
           set.map((f) => (
-            <div className="owner_info">
+            <div className="owner_info" key={f.id}>
               <div>
                 <a target="_blank" href={f.html_url}>Name - <Button value={f.name} color="red"/></a>
               </div>
@@ -56,7 +56,7 @@ export default function Starred({ link }) {
                 </div>
                 <div className="own_name">
                   <a target="_blank" href={f.owner.html_url}>
-                    {f.owner.login}
+                    Owner : {f.owner.login}
                   </a>
                 </div>
               </div>

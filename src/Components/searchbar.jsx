@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import Profile from "./profile";
-import Loader from "./loader";
+import Profile from './profile.jsx';
+import Loader from './loader.jsx';
 
 export default function SearchBar() {
   const [userInput, setUserInput] = useState("");

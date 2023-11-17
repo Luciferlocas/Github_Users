@@ -1,11 +1,12 @@
-import Button from "./button";
-import twitter from "./assets/twitter.png";
-import Followers from "./followers";
-import Orgs from "./orgs";
+import Button from "./button.jsx";
+import twitter from "../assets/twitter.png";
+import Followers from "./followers.jsx";
+import Orgs from "./orgs.jsx";
 import React from "react";
-import Repo from "./repo";
-import "./repo";
-import Starred from "./star";
+import Repo from "./repo.jsx";
+import "./repo.jsx";
+import Starred from "./star.jsx";
+
 
 export default function Profile({ data, link }) {
   if (!data) {
@@ -87,9 +88,9 @@ export default function Profile({ data, link }) {
         </div>
       </article>
       <div className="container">
-        <Repo url={data.repos_url} />
-        <Followers fol={data.followers_url} />
         <Orgs orgs={data.organizations_url} />
+        <Followers fol={data.followers_url} />
+        <Repo url={data.repos_url} />
         <Starred link={link} />
       </div>
     </>

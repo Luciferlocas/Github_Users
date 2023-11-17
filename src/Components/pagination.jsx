@@ -1,4 +1,4 @@
-import Button from "./button";
+import Button from "./button.jsx";
 
 export default function Pagination({page, func}) {
   return (

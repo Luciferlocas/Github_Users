@@ -323,7 +323,7 @@ section{
 
 .follower{
   display: flex;
-  margin: 1em;
+  margin: 0.5em 1em;
   align-items: center;
   border: 1px solid #087f5b;
   border-radius: 0.3em;
@@ -348,7 +348,7 @@ section{
 .owner_info{
   display: flex;
   flex-direction: column;
-  margin: 1em;
+  margin: 0.5em 1em;
   border: 1px solid #087f5b;
   border-radius: 0.3em;
   padding: 0.4em;

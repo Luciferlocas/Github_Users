@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import React, { useState } from "react";
-import Loader from "./loader";
-import Pagination from "./pagination";
+import Loader from "./loader.jsx";
+import Pagination from "./pagination.jsx";
 
 export default function Followers({ fol }){
   const [foll, setFol] = useState([]);
@@ -43,12 +43,12 @@ export default function Followers({ fol }){
             <h1>Followers</h1>
           </div>
           {isLoading ? <Loader /> : (set.length !== 0 ? set.map((f) => (
-            <div className="follower">
+            <div className="follower" key={f.id}>
             <div className="fol_avatar">
               <img src={f.avatar_url} alt="" />
             </div>
             <div className="fol_name">
-              <a target="_blank" href={f.html_url}>{f.login}</a>
+              <a target="_blank" href={f.html_url}>Username : {f.login}</a>
             </div>
           </div>
           )) : <div className="msg">"No Followers Yet...🥲"</div>)}
