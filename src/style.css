@@ -404,7 +404,7 @@ section{
   section{
     margin: 2em;
   }
-
+  
   .owner{
     flex-direction: column;
     gap: 0;
@@ -418,6 +418,10 @@ section{
 
   .inputfield {
     height: 0.5em;
+  }
+
+  .social img{
+    width: 1rem;
   }
 }
 
