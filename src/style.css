@@ -265,6 +265,10 @@ form{
   border-radius: 0.2em;
 }
 
+.social img{
+  width: 1rem;
+}
+
 .container{
   margin-top: 4em;
   display: flex;
@@ -404,7 +408,7 @@ section{
   section{
     margin: 2em;
   }
-  
+
   .owner{
     flex-direction: column;
     gap: 0;
@@ -418,10 +422,6 @@ section{
 
   .inputfield {
     height: 0.5em;
-  }
-
-  .social img{
-    width: 1rem;
   }
 }
 
@@ -449,9 +449,5 @@ section{
 
   .inputfield{
     font-size: 2.5em;
-  }
-
-  .social img{
-    width: 1rem;
   }
 }
