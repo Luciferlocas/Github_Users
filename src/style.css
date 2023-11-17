@@ -134,16 +134,18 @@ body::-webkit-scrollbar {
 }
 
 .loader {
-  position: absolute;
+  display: flex;
+  justify-content: center;
+  margin: 1em;
+}
+
+.load{
   border: 2px solid #c3fae8;
   border-radius: 50%;
   border-top: 2px solid #087f5b;
   width: 2em;
   aspect-ratio: 1 / 1;
   animation: spin 2s linear infinite;
-  left: 50%;
-  transform: translate(-50%, 0);
-  margin: 1em;
 }
 
 @keyframes spin {
@@ -330,6 +332,12 @@ section{
 
 .fol_name{
   margin-left: 1em ;
+}
+
+.page{
+  display: flex;
+  justify-content: space-around;
+  margin: 1em;
 }
 
 @media only screen and (max-width: 600px) {

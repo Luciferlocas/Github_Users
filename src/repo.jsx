@@ -2,10 +2,22 @@ import { useEffect } from "react";
 import React, { useState } from "react";
 import Loader from "./loader";
 import Button from "./button";
+import Pagination from "./pagination";
 
 export default function Repo({ url }) {
   const [repos, setRepos] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [page, setPage] = useState(1);
+  const perPage = 5;
+  const lastIndex = page * perPage;
+  const firstIndex = lastIndex - perPage;
+  const set = repos.slice(firstIndex, lastIndex);
+  const totalPage = Math.ceil(repos.length / perPage);
+  const handlePageChange = (newPage) => {
+    if (newPage >= 1 && newPage <= totalPage) {
+      setPage(newPage);
+    }
+  };
 
   useEffect(() => {
     const repodata = async () => {
@@ -24,7 +36,6 @@ export default function Repo({ url }) {
     repodata();
   }, [url]);
 
-  let count = 1;
   const languages = repos.map((repo) => repo.language);
   const languageFrequencyMap = new Map();
   languages.forEach((language) => {
@@ -52,13 +63,13 @@ export default function Repo({ url }) {
           <div className="repos">
             <h1>Public Repos</h1>
           </div>
-          {isLoading && <Loader />}
-          {repos.map((repo) => (
+          {isLoading ? <Loader /> :
+          set.map((repo) => (
             <>
               <div className="reponame">
                 <div key={repo.id}>
                   <a target="_blank" href={repo.html_url}>
-                    {count++} - {repo.name}
+                   Name - {repo.name}
                   </a>
                 </div>
                 <div className="forks">
@@ -72,7 +83,7 @@ export default function Repo({ url }) {
               </div>
             </>
           ))}
-          
+          <Pagination page={page} func={handlePageChange}/>
         </section>
     </>
   );
