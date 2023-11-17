@@ -12,7 +12,6 @@
 
 body {
   background-color: black;
-  overflow-x: hidden;
 }
 
 :root {
@@ -114,7 +113,12 @@ body {
   border-radius: 0.4em;
   border: 2px solid #087f5b;
   padding: 0.4em;
-  margin-right: 2em;
+}
+
+form{
+  display: flex;
+  align-items: center;
+  gap: 2em;
 }
 
 .forum {
@@ -288,7 +292,6 @@ section{
   border-radius: 0.4em;
   display: flex;
   flex-direction: column;
-  overflow: scroll;
 }
 
 .reponame a{
@@ -369,8 +372,16 @@ section{
 }
 
 @media only screen and (max-width: 600px) {
+  :root{
+    font-size: 8px !important;
+  }
+
   #blob{
     display: none;
+  }
+
+  .inputfield {
+    height: 0.5em;
   }
 
   .userinfo{
@@ -404,5 +415,36 @@ section{
   .owner{
     flex-direction: column;
     gap: 0;
+  }
+}
+
+@media only screen and (max-width : 149px){
+  :root{
+    font-size: 4px !important;
+  }
+
+  .buttons, .forks{
+    display: flex;
+    flex-direction: column;
+  }
+
+  .inputfield {
+    height: 0.5em;
+    padding: 0;
+    border-radius: 0.1em;
+  } 
+}
+
+@media only screen and (max-width : 69px){
+  :root{
+    font-size: 2px !important;
+  }
+
+  .inputfield{
+    font-size: 2.5em;
+  }
+
+  .social img{
+    width: 1rem;
   }
 }
