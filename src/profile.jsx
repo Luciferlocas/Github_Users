@@ -5,8 +5,9 @@ import Orgs from "./orgs";
 import React from "react";
 import Repo from "./repo";
 import "./repo";
+import Starred from "./star";
 
-export default function Profile({ data }) {
+export default function Profile({ data, link }) {
   if (!data) {
     return <></>;
   }
@@ -87,8 +88,9 @@ export default function Profile({ data }) {
       </article>
       <div className="container">
         <Repo url={data.repos_url} />
-        <Orgs orgs={data.organizations_url} />
         <Followers fol={data.followers_url} />
+        <Orgs orgs={data.organizations_url} />
+        <Starred link={link} />
       </div>
     </>
   );

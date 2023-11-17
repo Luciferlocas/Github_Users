@@ -27,7 +27,7 @@ export default function Repo({ url }) {
         const data = await res.json();
         setRepos(data);
       } catch (error) {
-        console.log("Error");
+        console.log("Repos didn't fetch,", error);
       } finally {
         setIsLoading(false);
       }
@@ -63,8 +63,7 @@ export default function Repo({ url }) {
           <div className="repos">
             <h1>Public Repos</h1>
           </div>
-          {isLoading ? <Loader /> :
-          set.map((repo) => (
+          {isLoading ? <Loader /> : (set.length !== 0 ? set.map((repo) => (
             <>
               <div className="reponame">
                 <div key={repo.id}>
@@ -82,8 +81,11 @@ export default function Repo({ url }) {
                 </div>
               </div>
             </>
-          ))}
-          <Pagination page={page} func={handlePageChange}/>
+          )) : <div className="msg">"No Repo Yet...🥲"</div>)
+          }
+          {repos.length > 5 ? (
+          <Pagination page={page} func={handlePageChange} />
+        ) : null}
         </section>
     </>
   );

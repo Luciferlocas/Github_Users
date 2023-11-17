@@ -26,7 +26,7 @@ export default function SearchBar() {
       }
       setData(data);
     } catch (error) {
-        console.log("Error, try reloding")
+        console.log("Error, try reloding.", error);
     } finally {
       setIsLoading(false);
     }
@@ -52,7 +52,7 @@ export default function SearchBar() {
         </form>
       </div>
       {isLoading && <Loader />}
-      {!isLoading && <Profile data={data} />}
+      {!isLoading && <Profile data={data} link={userInput}/>}
     </>
   );
 }

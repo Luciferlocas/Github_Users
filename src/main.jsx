@@ -7,15 +7,15 @@ import Para from "./para";
 import SearchBar from "./searchbar";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
+  <>
     <Cursor />
-  </React.StrictMode>
+  </>
 );
 
 ReactDOM.createRoot(document.getElementById("main")).render(
-  <React.StrictMode>
+  <>
     <Nav />
     <Para />
     <SearchBar />
-  </React.StrictMode>
+  </>
 );

@@ -8,9 +8,9 @@ export default function Followers({ fol }){
   const [isLoading, setIsLoading] = useState(false);
   const [page, setPage] = useState(1);
   const perPage = 5;
-  const finalIndex = page * perPage;
-  const initialIndex = finalIndex - perPage;
-  const show = foll.slice(initialIndex, finalIndex);
+  const lastIndex = page * perPage;
+  const firstIndex = lastIndex - perPage;
+  const set = foll.slice(firstIndex, lastIndex);
   const totalPage = Math.ceil(foll.length / perPage);
   const handlePageChange = (newPage) => {
     if (newPage >= 1 && newPage <= totalPage) {
@@ -27,7 +27,7 @@ export default function Followers({ fol }){
         const data = await res.json();
         setFol(data);
       } catch (error) {
-        console.log("Error");
+        console.log("Error loading followers,", error);
       } finally {
         setIsLoading(false);
       }
@@ -42,7 +42,7 @@ export default function Followers({ fol }){
           <div className="repos">
             <h1>Followers</h1>
           </div>
-          {isLoading ? <Loader /> : (show.length !== 0 ? show.map((f) => (
+          {isLoading ? <Loader /> : (set.length !== 0 ? set.map((f) => (
             <div className="follower">
             <div className="fol_avatar">
               <img src={f.avatar_url} alt="" />
@@ -52,7 +52,9 @@ export default function Followers({ fol }){
             </div>
           </div>
           )) : <div className="msg">"No Followers Yet...🥲"</div>)}
-         <Pagination page={page} func={handlePageChange}/>
+         {foll.length > 5 ? (
+          <Pagination page={page} func={handlePageChange} />
+        ) : null}
         </section>
     </>
   );

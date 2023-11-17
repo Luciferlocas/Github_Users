@@ -6,13 +6,13 @@
   font-family: Arial, Helvetica, sans-serif;
 }
 
+*::-webkit-scrollbar {
+  display: none;
+}
+
 body {
   background-color: black;
   overflow-x: hidden;
-}
-
-body::-webkit-scrollbar {
-  display: none;
 }
 
 :root {
@@ -275,7 +275,7 @@ section{
 }
 
 .repos h1{
-  font-size: 1.5rem;
+  font-size: clamp(0.3rem, 1.5rem, 2rem);
   margin: 1em;
   text-align: center;
   text-decoration: underline;
@@ -288,6 +288,11 @@ section{
   border-radius: 0.4em;
   display: flex;
   flex-direction: column;
+  overflow: scroll;
+}
+
+.reponame a{
+  font-size: clamp(0.3rem, 1rem, 1.2rem);
 }
 
 .orgname{
@@ -325,7 +330,7 @@ section{
   padding: 0.4em;
 }
 
-.follower img{
+.follower img, .own_avatar img{
   width: 3em;
   border-radius: 50%;
 }
@@ -340,6 +345,29 @@ section{
   margin: 1em;
 }
 
+.owner_info{
+  display: flex;
+  flex-direction: column;
+  margin: 1em;
+  border: 1px solid #087f5b;
+  border-radius: 0.3em;
+  padding: 0.4em;
+}
+
+.owner{
+  display: flex;
+  gap: 1em;
+  align-items: center;
+  padding: 0.4em;
+}
+
+@media only screen and (max-width: 999px){
+  .container{
+    display: grid;
+    grid-template-columns: repeat(2, minmax(150px, 3fr));
+  }
+}
+
 @media only screen and (max-width: 600px) {
   #blob{
     display: none;
@@ -351,14 +379,30 @@ section{
 
   .buttons{
     display: grid;
-    grid-template-columns: repeat(2, minmax(150px, 3fr));
+    grid-template-columns: repeat(2, minmax(50px, 2fr));
   }
 
   .container{
+    display: flex;
     flex-direction: column;
+  }
+
+  .follower{
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .forks{
+    display: grid;
+    grid-template-columns: repeat(2, minmax(50px, 2fr));
   }
 
   section{
     margin: 2em;
+  }
+
+  .owner{
+    flex-direction: column;
+    gap: 0;
   }
 }
