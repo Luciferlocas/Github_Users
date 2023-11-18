@@ -22,7 +22,7 @@ export default function SearchBar() {
       const res = await fetch(`https://api.github.com/users/${userInput}`);
       const data = await res.json();
       if(data.message === "Not Found"){
-        toast.error("User Not Found!", {
+        toast.error(`${userInput} not found!`, {
           position: toast.POSITION.BOTTOM_CENTER,
           className: "toast"
         });
