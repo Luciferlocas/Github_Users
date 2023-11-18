@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import Profile from './profile.jsx';
 import Loader from './loader.jsx';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 export default function SearchBar() {
   const [userInput, setUserInput] = useState("");
@@ -19,7 +22,10 @@ export default function SearchBar() {
       const res = await fetch(`https://api.github.com/users/${userInput}`);
       const data = await res.json();
       if(data.message === "Not Found"){
-        alert(`${userInput} not found. PLease enter a valid username`);
+        toast.error("User Not Found!", {
+          position: toast.POSITION.BOTTOM_CENTER,
+          className: "toast"
+        });
         return(
           <></>
         );
@@ -34,6 +40,7 @@ export default function SearchBar() {
 
   return (
     <>
+      <ToastContainer />
       <div className="forum">
         <form onSubmit={submitted}>
           <input
